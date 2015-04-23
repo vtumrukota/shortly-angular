@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html ng-app='shortly'>
   <head>
+
     <meta charset="utf-8" />
     <title>Shortly</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
@@ -10,11 +11,11 @@
 
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
 
-    <div class='navigation' ng-controller="NavController">
+    <div class='navigation' ng-controller="NavController" ng-show="isAuth()">
       <ul>
-        <li><a href='/#/links' class='link'>All Links</a></li>
+        <li><a href='/#/links' class='link' >All Links</a></li>
         <li><a href='/#/shorten' class='shorten'>Shorten</a></li>
-        <li><a href = '/#/signin' ng-click="signout()" class='logout' ng-show="isAuth()">Logout</a></li>
+        <li><a href = '/#/signin' ng-click="signout()" class='logout'>Logout</a></li>
       </ul>
   </div>
     <div ng-view></div>
