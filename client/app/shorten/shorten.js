@@ -5,4 +5,9 @@ angular.module('shortly.shorten', [])
   $scope.addLink = function(url){
     Links.addLink(url);
   };
+})
+.controller('NavController', function($scope, $location, Auth ){
+  $scope.isAuth = Auth.isAuth;
+  $scope.signout = Auth.signout;
+  // $location
 });

@@ -24,6 +24,8 @@ angular.module('shortly', [
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController'
     })
+
+
     .otherwise({
         redirectTo: '/links'
       });
