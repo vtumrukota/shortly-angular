@@ -10,9 +10,8 @@ angular.module('shortly.shorten', [])
       $scope.urlFlag = false;
     } else {
       $scope.urlFlag = true;
-
     }
-
+    $scope.shortenUrl = '';
   };
 })
 .controller('NavController', function($scope, $location, Auth ){

@@ -6,4 +6,7 @@
     <button>signup</button>
   </form>
   <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+  <div id='error' ng-show="userFlag">
+    {{ errorMessage }}
+  </div>
 </div>

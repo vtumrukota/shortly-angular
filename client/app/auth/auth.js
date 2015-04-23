@@ -7,24 +7,36 @@ angular.module('shortly.auth', [])
   $scope.user = {};
 
   $scope.signin = function () {
-    Auth.signin($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+    if(Auth.isValidUser($scope.user.username)){
+      $scope.userFlag = false;
+      Auth.signin($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      $scope.errorMessage = 'Invalid UserName. Please only use "A-Z and 0-9"!';
+      $scope.userFlag = true;
+    }
   };
 
   $scope.signup = function () {
-    Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  };
+    if(Auth.isValidUser($scope.user.username)){
+      $scope.userFlag = false;
+      Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+     } else {
+        $scope.errorMessage = 'Invalid UserName. Please only use "A-Z, 0-9, -, & _"!';
+        $scope.userFlag = true;
+     }
+   }
 });
