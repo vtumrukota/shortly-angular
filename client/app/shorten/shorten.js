@@ -2,8 +2,17 @@ angular.module('shortly.shorten', [])
 
 .controller('ShortenController', function ($scope, $location, Links) {
   $scope.link = {};
+  $scope.urlFlag = false;
+  $scope.errorMessage = 'URL is Invalid! Please try again!';
   $scope.addLink = function(url){
-    Links.addLink(url);
+    if(Links.isValidLink(url)){
+      Links.addLink(url);
+      $scope.urlFlag = false;
+    } else {
+      $scope.urlFlag = true;
+
+    }
+
   };
 })
 .controller('NavController', function($scope, $location, Auth ){

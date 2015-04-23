@@ -1,6 +1,9 @@
 <div id='container' ng-controller = "ShortenController">
   <input ng-model="shortenUrl">
   <button ng-click="addLink(shortenUrl)">add URL</button>
+  <div id='error' ng-show="urlFlag">
+    {{ errorMessage }}
+  </div>
 </div>
 
 
